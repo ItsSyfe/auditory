@@ -25,13 +25,13 @@ public abstract class JukeboxDiscSoundMixin extends BlockEntity {
         super(blockEntityType, blockPos, blockState);
     }
 
-    @Inject(method = "removeItem",
+    @Inject(method = "splitTheItem",
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/world/level/block/entity/JukeboxBlockEntity;setHasRecordBlockState(Lnet/minecraft/world/entity/Entity;Z)V",
                     shift = At.Shift.AFTER
             )
     )
-    private void auditory_ejectDiscSound(int i, int j, CallbackInfoReturnable<ItemStack> cir) {
+    private void auditory_ejectDiscSound(int i, CallbackInfoReturnable<ItemStack> cir) {
         if (Auditory.getConfig().block_sounds.jukebox_sounds) {
             if (this.level != null) {
                 this.level.playSound(null, this.getBlockPos(), ModSoundEvents.BLOCK_JUKEBOX_EJECT, SoundSource.BLOCKS, 1.0F, 0.8f + level.random.nextFloat() * 0.4F);
@@ -40,8 +40,8 @@ public abstract class JukeboxDiscSoundMixin extends BlockEntity {
     }
 
 
-    @Inject(method = "setItem", at = @At("HEAD"))
-    private void auditory_insertDiscSound(int i, ItemStack itemStack, CallbackInfo ci) {
+    @Inject(method = "setTheItem", at = @At("HEAD"))
+    private void auditory_insertDiscSound(ItemStack itemStack, CallbackInfo ci) {
         if (Auditory.getConfig().block_sounds.jukebox_sounds) {
             if (itemStack.is(ItemTags.MUSIC_DISCS) && this.level != null) {
                 this.level.playSound(null, this.getBlockPos(), ModSoundEvents.BLOCK_JUKEBOX_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
