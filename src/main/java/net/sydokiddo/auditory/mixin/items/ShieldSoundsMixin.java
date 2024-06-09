@@ -1,5 +1,6 @@
 package net.sydokiddo.auditory.mixin.items;
 
+import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -37,7 +38,5 @@ public abstract class ShieldSoundsMixin extends Item implements Equipable {
     // Shields now have a unique equipping sound
 
     @Override
-    public @NotNull SoundEvent getEquipSound() {
-        return ModSoundEvents.ITEM_SHIELD_EQUIP;
-    }
+    public @NotNull Holder<SoundEvent> getEquipSound() {return Holder.direct(ModSoundEvents.ITEM_SHIELD_EQUIP);}
 }

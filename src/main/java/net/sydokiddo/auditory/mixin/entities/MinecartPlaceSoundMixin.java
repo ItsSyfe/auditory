@@ -20,7 +20,7 @@ public class MinecartPlaceSoundMixin {
     // Only need one local, so it's easier and more stable to use ModifyVariable instead of Inject with LocalCapture
     @ModifyVariable(method = "useOn",
         at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/server/level/ServerLevel;gameEvent(Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/gameevent/GameEvent$Context;)V",
+            target = "Lnet/minecraft/server/level/ServerLevel;gameEvent(Lnet/minecraft/core/Holder;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/gameevent/GameEvent$Context;)V",
             shift = Shift.AFTER
         )
     )
