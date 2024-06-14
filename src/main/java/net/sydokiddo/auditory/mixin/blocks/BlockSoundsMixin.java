@@ -2,7 +2,6 @@ package net.sydokiddo.auditory.mixin.blocks;
 
 
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,12 +16,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 // Any blocks in the respective tags will use the respective sound group.
 // This is entirely data-driven and can be controlled by adding the block's ID to the respective tag through a datapack or mod.
 
-@Mixin(Block.class)
-abstract class BlockSoundsMixin extends BlockBehaviour {
-
-    public BlockSoundsMixin(Properties properties) {
-        super(properties);
-    }
+@Mixin(BlockBehaviour.class)
+abstract class BlockSoundsMixin {
 
     @Inject(at = @At("HEAD"), method = "getSoundType", cancellable = true)
     private void auditory_alterSoundType(BlockState state, CallbackInfoReturnable<SoundType> info) {
