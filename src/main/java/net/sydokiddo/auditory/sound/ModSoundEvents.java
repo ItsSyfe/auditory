@@ -156,7 +156,7 @@ public class ModSoundEvents {
         SoundEvents.DECORATED_POT_FALL);
 
     private static SoundEvent registerSoundEvent(String name) {
-        ResourceLocation id = new ResourceLocation(Auditory.MOD_ID, name);
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Auditory.MOD_ID, name);
         SoundEvent se = SoundEvent.createVariableRangeEvent(id);
         return Registry.register(BuiltInRegistries.SOUND_EVENT, id, se);
     }

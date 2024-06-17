@@ -28,7 +28,7 @@ abstract class EnderPearlSoundMixin extends ThrowableItemProjectile {
     @Inject(method = "onHit",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/Entity;teleportTo(DDD)V",
+            target = "Lnet/minecraft/world/entity/Entity;changeDimension(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;",
             shift = Shift.AFTER
         )
     )
